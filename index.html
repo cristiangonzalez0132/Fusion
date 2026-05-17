@@ -17,8 +17,8 @@
       --fondo-suave: #15100e;
       --rojo: #7b1113;
       --rojo-claro: #b51f24;
-      --dorado: #d9a441;
-      --dorado-claro: #f1cc76;
+      --dorado: #c1121f;
+      --dorado-claro: #ff5c6c;
       --texto: #f8f1e8;
       --texto-suave: #cfc2b4;
       --borde: rgba(217, 164, 65, 0.35);
@@ -251,7 +251,7 @@
       border: 1px solid var(--borde);
       border-radius: 32px;
       padding: 18px;
-      box-shadow: var(--sombra);
+      box-shadow: 0 10px 35px rgba(193,18,31,0.12);
       transform: rotate(2deg);
     }
 
@@ -311,6 +311,97 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
+    }
+
+    .filtros-menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .filtro {
+      border: 1px solid var(--borde);
+      background: rgba(255,255,255,0.05);
+      color: var(--texto);
+      padding: 10px 15px;
+      border-radius: 999px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: var(--transicion);
+    }
+
+    .filtro:hover,
+    .filtro.activo {
+      background: linear-gradient(135deg, #c1121f, #ff5c6c);
+      color: white;
+      border-color: var(--dorado);
+    }
+
+    .menu-lista {
+      display: grid;
+      gap: 24px;
+    }
+
+    .categoria-menu {
+      border: 1px solid var(--borde);
+      background: linear-gradient(180deg, rgba(193,18,31,0.14), rgba(255,255,255,0.03));
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: var(--sombra);
+    }
+
+    .categoria-menu.oculto {
+      display: none;
+    }
+
+    .categoria-menu h3 {
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      color: var(--dorado-claro);
+    }
+
+    .nota-menu {
+      color: var(--texto-suave);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .items-menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .item-menu {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 15px;
+      border-radius: 16px;
+      background: rgba(193,18,31,0.08);
+      border: 1px solid rgba(255,92,108,0.22);
+    }
+
+    .item-menu h4 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      margin-bottom: 4px;
+    }
+
+    .item-menu p {
+      color: var(--texto-suave);
+      font-size: .9rem;
+      line-height: 1.45;
+    }
+
+    .item-menu strong {
+      white-space: nowrap;
+      color: var(--dorado-claro);
+      font-size: 1.02rem;
     }
 
     .card {
@@ -565,39 +656,175 @@
       </div>
     </section>
 
-    <section id="menu">
+    <section id="menu" class="menu-completo">
       <div class="contenedor">
         <div class="titulo-seccion">
-          <span>Destacados</span>
-          <h2>Opciones para pedir, compartir o disfrutar en el local.</h2>
-          <p>Podés cambiar estos productos por la carta real de la tienda y agregar precios actualizados cuando los tengas.</p>
+          <span>Menú completo</span>
+          <h2>Cafetería, almuerzos, cenas, sushi, bebidas y postres.</h2>
+          <p>Elegí una categoría y consultá tu pedido directo por WhatsApp.</p>
         </div>
 
-        <div class="cards">
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=80" alt="Tabla de sushi" />
-            <div class="card-contenido">
-              <h3>Tablas de sushi</h3>
-              <p>Combinaciones ideales para compartir, con piezas variadas y presentación cuidada.</p>
-              <span class="precio">Consultar carta</span>
+        <div class="filtros-menu">
+          <button class="filtro activo" data-filtro="todo">Todo</button>
+          <button class="filtro" data-filtro="sushi">Sushi</button>
+          <button class="filtro" data-filtro="cena">Cena</button>
+          <button class="filtro" data-filtro="almuerzo">Almuerzo</button>
+          <button class="filtro" data-filtro="cafeteria">Cafetería</button>
+          <button class="filtro" data-filtro="bebidas">Bebidas</button>
+          <button class="filtro" data-filtro="postres">Postres</button>
+        </div>
+
+        <div class="menu-lista">
+          <article class="categoria-menu" data-categoria="sushi">
+            <h3>Clásicos</h3>
+            <p class="nota-menu">Uramaki x8 $330 / Maki x10 $360</p>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Philadelphia</h4><p>Salmón y queso crema.</p></div></div>
+              <div class="item-menu"><div><h4>New York Clásico</h4><p>Salmón, queso crema y palta.</p></div></div>
+              <div class="item-menu"><div><h4>Mango Clásico</h4><p>Salmón, queso crema y mango.</p></div></div>
+              <div class="item-menu"><div><h4>Green Clásico</h4><p>Salmón, queso crema y rúcula.</p></div></div>
+              <div class="item-menu"><div><h4>Ocean Clásico</h4><p>Salmón, queso crema, frutilla y rúcula.</p></div></div>
+              <div class="item-menu"><div><h4>California Clásico</h4><p>Kanikama, queso crema y palta.</p></div></div>
+              <div class="item-menu"><div><h4>Ebi Clásico</h4><p>Langostinos, queso crema y ciboulette.</p></div></div>
+              <div class="item-menu"><div><h4>Veggie Clásico</h4><p>Queso crema, palta, mango, zanahoria y ciboulette.</p></div></div>
             </div>
           </article>
 
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1562802378-063ec186a863?auto=format&fit=crop&w=900&q=80" alt="Rolls de sushi" />
-            <div class="card-contenido">
-              <h3>Rolls especiales</h3>
-              <p>Sabores frescos, ingredientes seleccionados y opciones para todos los gustos.</p>
-              <span class="precio">Pedidos por WhatsApp</span>
+          <article class="categoria-menu" data-categoria="sushi">
+            <h3>Premium Uramaki</h3>
+            <p class="nota-menu">8 piezas</p>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Sunset Roll</h4><p>Salmón fresco y queso crema, coronado con láminas de salmón brulee.</p></div><strong>$395</strong></div>
+              <div class="item-menu"><div><h4>Sublime Roll</h4><p>Langostinos panko, salmón fresco y palta. Coronado con palta, salsa teriyaki y cebolla crispy.</p></div><strong>$395</strong></div>
+              <div class="item-menu"><div><h4>Manhattan Roll</h4><p>Salmón fresco, queso crema y palta. Coronado con mango, salsa maracuyá y chips de boniato.</p></div><strong>$395</strong></div>
+              <div class="item-menu"><div><h4>Dragon Roll</h4><p>Salmón tempura, queso crema, ciboulette, tomates secos y palta.</p></div><strong>$395</strong></div>
+              <div class="item-menu"><div><h4>Magic Crunch</h4><p>Langostinos panko, queso crema y palta. Coronado con salmón sellado y zest de limón.</p></div><strong>$395</strong></div>
+              <div class="item-menu"><div><h4>New York Premium</h4><p>Salmón fresco, queso crema y pepino. Coronado con palta y chips de boniato.</p></div><strong>$395</strong></div>
             </div>
           </article>
 
-          <article class="card">
-            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Café servido" />
-            <div class="card-contenido">
-              <h3>Café & momentos</h3>
-              <p>Un espacio para cortar la rutina, reunirse y disfrutar con buena atención.</p>
-              <span class="precio">Te esperamos</span>
+          <article class="categoria-menu" data-categoria="sushi">
+            <h3>Premium Maki</h3>
+            <p class="nota-menu">10 piezas</p>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Avocado Maki</h4><p>Salmón fresco y queso crema. Coronado con palta y semillas de sésamo.</p></div><strong>$435</strong></div>
+              <div class="item-menu"><div><h4>Brooklyn Maki</h4><p>Langostinos frescos, queso crema y ciboulette. Coronado con salmón ahumado y salsa sriracha.</p></div><strong>$435</strong></div>
+              <div class="item-menu"><div><h4>Narumi Maki</h4><p>Salmón fresco, queso crema y mango. Coronado con palta, salsa maracuyá y chips de boniato.</p></div><strong>$435</strong></div>
+              <div class="item-menu"><div><h4>Pasión Maki</h4><p>Langostinos panko y palta. Coronado con salmón sellado y salsa maracuyá.</p></div><strong>$435</strong></div>
+              <div class="item-menu"><div><h4>Green Maki Mix</h4><p>Salmón fresco, langostinos frescos y palta. Coronado con rúcula y alioli.</p></div><strong>$435</strong></div>
+              <div class="item-menu"><div><h4>Sublime Maki</h4><p>Salmón fresco, langostinos panko y palta. Coronado con palta, teriyaki y cebolla crispy.</p></div><strong>$435</strong></div>
+            </div>
+          </article>
+
+          <article class="categoria-menu" data-categoria="sushi">
+            <h3>Hot Roll & Poke Bowl</h3>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Hot Salmón</h4><p>Salmón y queso crema.</p></div><strong>$400</strong></div>
+              <div class="item-menu"><div><h4>Hot New York</h4><p>Salmón, queso crema y palta.</p></div><strong>$400</strong></div>
+              <div class="item-menu"><div><h4>Hot Ebi</h4><p>Langostinos, queso crema y ciboulette.</p></div><strong>$400</strong></div>
+              <div class="item-menu"><div><h4>New York Poke</h4><p>Arroz, salmón fresco, queso crema, palta, zanahoria, jengibre caramelizado, sésamo y teriyaki.</p></div><strong>$450</strong></div>
+              <div class="item-menu"><div><h4>N.Y Premium</h4><p>Arroz, salmón cocido, queso crema, palta, zanahoria, jengibre, sésamo y teriyaki.</p></div><strong>$485</strong></div>
+              <div class="item-menu"><div><h4>Furys Poke</h4><p>Arroz, langostinos panko, queso crema, zanahoria, algas nori, cebolla crispy y pesto La Fusión.</p></div><strong>$485</strong></div>
+            </div>
+          </article>
+
+          <article class="categoria-menu" data-categoria="sushi">
+            <h3>Geishas, Gunkan, Niguiris y Combos</h3>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Geishas con palta</h4><p>Salmón, queso crema, rúcula y palta. X4 $195 / X6 $290 / X8 $360</p></div></div>
+              <div class="item-menu"><div><h4>Gunkan Premium</h4><p>Salmón, queso crema, tomates deshidratados, nueces, salmón cocido, teriyaki y cebolla crispy.</p></div><strong>desde $220</strong></div>
+              <div class="item-menu"><div><h4>Niguiris</h4><p>Mixto veggie, mixto fresco y skin, skin teriyaki, salmón fresco, salmón brulee y mixto premium.</p></div><strong>desde $180</strong></div>
+              <div class="item-menu"><div><h4>Combos Clásicos</h4><p>12 piezas $530 / 24 piezas $980 / 36 piezas $1390 / 52 piezas $2050</p></div></div>
+              <div class="item-menu"><div><h4>Combos Hot</h4><p>Combo Hot #1 $985 / #2 $1730 / #3 $2510</p></div></div>
+              <div class="item-menu"><div><h4>Combos Premium</h4><p>38 piezas $2165 / 52 piezas $2685 / 80 piezas $4120 / 120 piezas $6050</p></div></div>
+            </div>
+          </article>
+
+          <article class="categoria-menu" data-categoria="cena almuerzo">
+            <h3>Pizzetas</h3>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Muzzarella</h4><p>Salsa de tomate y muzzarella.</p></div><strong>$325</strong></div>
+              <div class="item-menu"><div><h4>Yankee</h4><p>Muzzarella, panceta crocante y cebolla caramelizada.</p></div><strong>$400</strong></div>
+              <div class="item-menu"><div><h4>Bondiola y pesto</h4><p>Muzzarella, bondiola, rúcula y pesto La Fusión.</p></div><strong>$400</strong></div>
+              <div class="item-menu"><div><h4>Americana</h4><p>Muzzarella, pepperoni y aceitunas negras.</p></div><strong>$400</strong></div>
+              <div class="item-menu"><div><h4>Hawaiana</h4><p>Muzzarella, jamón glaseado, ananá y cebolla crispy.</p></div><strong>$440</strong></div>
+              <div class="item-menu"><div><h4>Mediterránea</h4><p>Muzzarella, tomates secos, rúcula, jamón crudo y parmesano.</p></div><strong>$440</strong></div>
+            </div>
+          </article>
+
+          <article class="categoria-menu" data-categoria="cena almuerzo">
+            <h3>Entradas, picadas y milanesas</h3>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Papas fritas</h4><p>Porción con aderezos.</p></div><strong>$170</strong></div>
+              <div class="item-menu"><div><h4>Fritas cheddar</h4><p>Papas fritas con cheddar cremoso.</p></div><strong>$250</strong></div>
+              <div class="item-menu"><div><h4>Nuggets de pollo</h4><p>10 unidades con salsa barbacoa.</p></div><strong>$280</strong></div>
+              <div class="item-menu"><div><h4>Rabas de calamar</h4><p>10 unidades con mayo tártara.</p></div><strong>$320</strong></div>
+              <div class="item-menu"><div><h4>Picada caliente</h4><p>Arrolladitos, bastones de muzzarella, aros de cebolla, nuggets, milanesa picada y brochettes.</p></div><strong>desde $950</strong></div>
+              <div class="item-menu"><div><h4>Picada de mar</h4><p>Miniaturas de pescado, rabas, langostinos panko, bastones de muzzarella y arrolladitos.</p></div><strong>desde $1200</strong></div>
+              <div class="item-menu"><div><h4>Milanesa clásica</h4><p>Carne o pollo, con ensalada mixta y papas fritas.</p></div><strong>$420</strong></div>
+              <div class="item-menu"><div><h4>Milanesa completa</h4><p>Carne o pollo, jamón, queso, panceta y huevo frito.</p></div><strong>$490</strong></div>
+              <div class="item-menu"><div><h4>Milanesa napolitana</h4><p>Carne o pollo, salsa de tomate, jamón, queso y arvejas.</p></div><strong>$490</strong></div>
+            </div>
+          </article>
+
+          <article class="categoria-menu" data-categoria="almuerzo cena">
+            <h3>Bocatas y platos del día</h3>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Bocata jamón crudo y dambo</h4><p>Pan bata, queso dambo, jamón crudo, alioli, rúcula y cherrys.</p></div><strong>$260</strong></div>
+              <div class="item-menu"><div><h4>Bocata salmón ahumado</h4><p>Pan bata, salmón ahumado, queso crema con alcaparras, verdes y papas fritas.</p></div><strong>$400</strong></div>
+              <div class="item-menu"><div><h4>Bocata pollo teriyaki</h4><p>Pollo panko, queso dambo, morrones asados, palta, teriyaki y papas fritas.</p></div><strong>$420</strong></div>
+              <div class="item-menu"><div><h4>Ensalada César</h4><p>Lechuga, rúcula, pollo, crutons y mayonesa emulsionada con hierbas.</p></div><strong>$400</strong></div>
+              <div class="item-menu"><div><h4>Sorrentinos de calabaza</h4><p>Con salsa cuatro quesos, cherrys y albahaca.</p></div><strong>$420</strong></div>
+              <div class="item-menu"><div><h4>Colita de cuadril al horno</h4><p>Con verduras asadas o fritas y ensalada.</p></div><strong>$690</strong></div>
+              <div class="item-menu"><div><h4>Salmón a la plancha</h4><p>Con verduras al wok y tapenade de aceitunas negras.</p></div><strong>$720</strong></div>
+            </div>
+          </article>
+
+          <article class="categoria-menu" data-categoria="cafeteria">
+            <h3>Cafetería</h3>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Expresso simple</h4></div><strong>$80</strong></div>
+              <div class="item-menu"><div><h4>Americano</h4></div><strong>$90</strong></div>
+              <div class="item-menu"><div><h4>Expresso doble</h4></div><strong>$100</strong></div>
+              <div class="item-menu"><div><h4>Cortado</h4><p>Con leche espumada.</p></div><strong>$100</strong></div>
+              <div class="item-menu"><div><h4>Capuchino</h4><p>Con leche espumada.</p></div><strong>$120</strong></div>
+              <div class="item-menu"><div><h4>Submarino</h4><p>Con chocolate.</p></div><strong>$140</strong></div>
+              <div class="item-menu"><div><h4>Milkshakes</h4><p>Chocolate, frutilla, crema u oreo.</p></div><strong>$220</strong></div>
+              <div class="item-menu"><div><h4>Iced Americano</h4><p>Mediano $160 / Grande $200</p></div></div>
+              <div class="item-menu"><div><h4>Iced Oreo</h4><p>Mediano $180 / Grande $220</p></div></div>
+              <div class="item-menu"><div><h4>Iced Cream Coffee</h4><p>Mediano $190 / Grande $240</p></div></div>
+            </div>
+          </article>
+
+          <article class="categoria-menu" data-categoria="cafeteria postres">
+            <h3>Meriendas, salados y postres</h3>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Clásico para dos</h4><p>2 bebidas, 2 croissants con jalea, 4 scones, 1 postre, panera mixta y dips.</p></div><strong>$825</strong></div>
+              <div class="item-menu"><div><h4>Completo para dos</h4><p>2 bebidas, croissants, sandwich tostado, scones con queso crema, bondiola y rúcula, 2 postres.</p></div><strong>$1100</strong></div>
+              <div class="item-menu"><div><h4>Croissant con jamón y queso</h4></div><strong>$120</strong></div>
+              <div class="item-menu"><div><h4>Tostado americano</h4><p>Pan de molde, cheddar, panceta, huevo duro y cebolla caramelizada.</p></div><strong>$250</strong></div>
+              <div class="item-menu"><div><h4>Brownie con nueces</h4></div><strong>$165</strong></div>
+              <div class="item-menu"><div><h4>Brownie + bocha de helado</h4></div><strong>$200</strong></div>
+              <div class="item-menu"><div><h4>Carrot Cake</h4></div><strong>$220</strong></div>
+              <div class="item-menu"><div><h4>Cheesecake frutos rojos</h4></div><strong>$240</strong></div>
+              <div class="item-menu"><div><h4>Crumble de manzana</h4></div><strong>$240</strong></div>
+            </div>
+          </article>
+
+          <article class="categoria-menu" data-categoria="bebidas">
+            <h3>Bebidas, cervezas, tragos y vinos</h3>
+            <div class="items-menu">
+              <div class="item-menu"><div><h4>Jugo de naranja</h4></div><strong>$170</strong></div>
+              <div class="item-menu"><div><h4>Limonada jengibre y menta</h4></div><strong>$170</strong></div>
+              <div class="item-menu"><div><h4>Naranja y frutos rojos</h4></div><strong>$190</strong></div>
+              <div class="item-menu"><div><h4>Agua 600 ml</h4></div><strong>$85</strong></div>
+              <div class="item-menu"><div><h4>Coca Cola 600 ml</h4></div><strong>$130</strong></div>
+              <div class="item-menu"><div><h4>Cerveza Patagonia</h4></div><strong>$220</strong></div>
+              <div class="item-menu"><div><h4>Heineken 1 litro</h4></div><strong>$280</strong></div>
+              <div class="item-menu"><div><h4>Fernet con Coca</h4></div><strong>$200</strong></div>
+              <div class="item-menu"><div><h4>Gin Tonic</h4><p>Pepino, limón o frutos rojos.</p></div><strong>$230</strong></div>
+              <div class="item-menu"><div><h4>Aperol Spritz</h4></div><strong>$230</strong></div>
+              <div class="item-menu"><div><h4>Vinos</h4><p>Variedad de bodegas. Consultar.</p></div></div>
             </div>
           </article>
         </div>
@@ -672,5 +899,23 @@
       <p>© 2026 La Fusión 33. Todos los derechos reservados.</p>
     </div>
   </footer>
+  <script>
+    const botonesFiltro = document.querySelectorAll('.filtro');
+    const categoriasMenu = document.querySelectorAll('.categoria-menu');
+
+    botonesFiltro.forEach((boton) => {
+      boton.addEventListener('click', () => {
+        const filtro = boton.dataset.filtro;
+
+        botonesFiltro.forEach((b) => b.classList.remove('activo'));
+        boton.classList.add('activo');
+
+        categoriasMenu.forEach((categoria) => {
+          const pertenece = categoria.dataset.categoria.includes(filtro);
+          categoria.classList.toggle('oculto', filtro !== 'todo' && !pertenece);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
